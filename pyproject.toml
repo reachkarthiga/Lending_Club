@@ -1,0 +1,10 @@
+[project]
+name = "lending-club"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pyspark==3.5.5",
+    "pytest>=8.4.1",
+]
