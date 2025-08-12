@@ -4,3 +4,4 @@ data/cleaned_data
 lib/__pycache__
 lib/personal/__pycache__
 data/
+lib/payment/__pycache__

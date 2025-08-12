@@ -2,6 +2,7 @@ import sys
 from lib.logger import Log4j
 from lib import Transformations, DataReader, Utils
 from lib.personal import personal_transformations
+from lib.payment import payments_transformations
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
@@ -24,6 +25,12 @@ if __name__ == '__main__':
     Utils.save_cleaned_data(personal_df_cleaned, job_run_env, "Personal")   
     personal_points_df = personal_transformations.personal_points_calculation(personal_df_cleaned,spark)
     logger.info("Personal data processed and saved successfully")
+
+    payment_df = payments_transformations.get_payment_details(lending_club_mbr)
+    payment_df_cleaned = payments_transformations.clean_payment_df(payment_df)
+    Utils.save_cleaned_data(payment_df_cleaned,job_run_env, "Payment")
+    payments_points_df = payments_transformations.payments_points_calculation(payment_df_cleaned, personal_df_cleaned,spark)
+    logger.info("Payment data processed and saved successfully")    
 
     Utils.stopSpark(spark)
 
