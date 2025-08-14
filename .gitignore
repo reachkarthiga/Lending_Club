@@ -5,3 +5,5 @@ lib/__pycache__
 lib/personal/__pycache__
 data/
 lib/payment/__pycache__
+lib/defaults/__pycache__
+lib/inquires/__pycache__
