@@ -5,6 +5,8 @@ from lib.personal import personal_transformations
 from lib.payment import payments_transformations
 from lib.defaults import defaults_transformations
 from lib.inquires import inquires_transformations
+from lib.loan import loan_transformations
+from lib import Transformations
 
 if __name__ == '__main__':
     if len(sys.argv) < 2:
@@ -46,6 +48,18 @@ if __name__ == '__main__':
     inquires_points_df = inquires_transformations.inquires_points_calculation(inquires_df_cleaned, spark)
     logger.info("Inquires data processed and saved successfully")
 
+    loan_df = loan_transformations.get_loan_details(lending_club_mbr)
+    loan_df_cleaned = loan_transformations.clean_loan_df(loan_df)
+    Utils.save_cleaned_data(loan_df_cleaned, job_run_env, "Loan")
+    loan_points_df = loan_transformations.loan_points_calculation(loan_df_cleaned, personal_df_cleaned, spark)
+    logger.info("Loan data processed and saved successfully")
+
+    points_table = Transformations.calculate_final_points(payments_points_df, loan_points_df, inquires_points_df, defaults_points_df, personal_points_df)
+    logger.info("Final points table calculated successfully")
+
+    Utils.writeToDisk(points_table, job_run_env)
+    logger.info("Points data written to disk successfully")
+    
     Utils.stopSpark(spark)
 
 

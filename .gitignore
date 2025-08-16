@@ -7,3 +7,4 @@ data/
 lib/payment/__pycache__
 lib/defaults/__pycache__
 lib/inquires/__pycache__
+lib/loan/__pycache__
