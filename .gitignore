@@ -3,7 +3,9 @@
 data/cleaned_data
 lib/__pycache__
 lib/personal/__pycache__
-data/
+data/cleaned_data
+data/points_data
+data/accepted_2007_to_2018Q4.csv
 lib/payment/__pycache__
 lib/defaults/__pycache__
 lib/inquires/__pycache__
