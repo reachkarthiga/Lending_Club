@@ -8,3 +8,4 @@ lib/payment/__pycache__
 lib/defaults/__pycache__
 lib/inquires/__pycache__
 lib/loan/__pycache__
+test_lc/__pycache__
